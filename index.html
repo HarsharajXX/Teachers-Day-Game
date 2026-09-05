@@ -10,6 +10,10 @@
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
 
+  <!-- Client-side QR Code & ZIP Generator Libraries -->
+  <script src="/vendor/qrcode.min.js"></script>
+  <script src="/vendor/jszip.min.js"></script>
+
   <style>
     /* ==========================================================================
        IMMERSIVE UI THEME (DEEP SPACE NAVY #050B18, NEON CYAN #00F2FF, PURPLE #7000FF)
@@ -1315,6 +1319,147 @@
       transform: rotate(90deg);
     }
 
+    /* Target URL Configuration Card */
+    .qr-url-card {
+      background: rgba(13, 21, 37, 0.85);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+      border-radius: 16px;
+      padding: 16px 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+    .qr-url-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .qr-url-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .qr-url-status {
+      font-size: 11px;
+      font-weight: 700;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      padding: 2px 8px;
+      border-radius: 9999px;
+    }
+    .qr-url-input-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .qr-url-input {
+      flex: 1;
+      background: rgba(5, 11, 24, 0.85);
+      border: 1.5px solid rgba(0, 242, 255, 0.35);
+      border-radius: 10px;
+      color: var(--neon-cyan);
+      font-family: monospace;
+      font-size: 13px;
+      padding: 9px 14px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+    .qr-url-input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.35);
+    }
+    .qr-apply-btn {
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b4d8 100%);
+      color: #050b14;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 9px 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .qr-apply-btn:hover {
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.45);
+      transform: translateY(-1px);
+    }
+    .qr-preset-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .qr-preset-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .qr-preset-btn {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .qr-preset-btn.active {
+      background: rgba(0, 242, 255, 0.16);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.25);
+    }
+    .qr-preset-btn:hover:not(.active) {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #ffffff;
+    }
+    .qr-url-tip {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      background: rgba(0, 242, 255, 0.06);
+      border-left: 3px solid var(--neon-cyan);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      color: #94a3b8;
+      line-height: 1.45;
+    }
+    .qr-url-tip code {
+      color: var(--neon-cyan);
+      background: rgba(0, 242, 255, 0.1);
+      padding: 1px 4px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .qr-card-link-preview {
+      font-family: monospace;
+      font-size: 10px;
+      color: var(--text-muted);
+      background: rgba(5, 11, 24, 0.7);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      max-width: 100%;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
     /* Modal Toolbar */
     .qr-modal-toolbar {
       display: flex;
@@ -1750,6 +1895,51 @@
         <button class="qr-close-btn" onclick="closeQrCenter()" title="Close">&times;</button>
       </div>
 
+      <!-- Target URL Configuration Box -->
+      <div class="qr-url-card">
+        <div class="qr-url-header">
+          <div class="qr-url-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span>Target URL Encoded in QR Codes (Scanned by Mobile)</span>
+          </div>
+          <span class="qr-url-status" id="qrUrlStatus">● Live URL Active</span>
+        </div>
+        
+        <div class="qr-url-input-row">
+          <input type="text" id="qrBaseUrlInput" class="qr-url-input" placeholder="https://..." onchange="onCustomUrlChange(this.value)" />
+          <button type="button" class="qr-apply-btn" onclick="applyBaseUrlFromInput()">Update Codes</button>
+        </div>
+
+        <div class="qr-preset-row">
+          <span class="qr-preset-label">Quick Presets:</span>
+          <button type="button" id="btnPresetDev" class="qr-preset-btn active" onclick="setPresetBaseUrl('dev')">
+            🟢 Active Live Dev App (Mobile Ready Now)
+          </button>
+          <button type="button" id="btnPresetPre" class="qr-preset-btn" onclick="setPresetBaseUrl('pre')">
+            🚀 Shared App URL (After Sharing in AI Studio)
+          </button>
+          <button type="button" id="btnPresetCurrent" class="qr-preset-btn" onclick="setPresetBaseUrl('current')">
+            🌐 Current Browser Origin
+          </button>
+        </div>
+
+        <div class="qr-url-tip">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2" style="flex-shrink:0; margin-top:1px;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          <div>
+            <strong>Why did mobile scanner show "Page not found"?</strong>
+            Google AI Studio assigns two URLs: <code>ais-dev-...</code> (the running development app) and <code>ais-pre-...</code> (the shared build). If you scan before clicking <strong>Share</strong> in AI Studio, <code>ais-pre-...</code> has not been deployed yet and returns a 404! The <strong>Active Live Dev App</strong> preset solves this and works immediately on your phone right now.
+          </div>
+        </div>
+      </div>
+
       <!-- Controls & Quick Actions -->
       <div class="qr-modal-toolbar">
         <div class="qr-filter-group">
@@ -1770,14 +1960,14 @@
             </svg>
             <span>Print Sheet (PDF)</span>
           </button>
-          <a href="/qr-codes/cse-hunt-all-20-qrs.zip" download="cse-hunt-all-20-qrs.zip" class="qr-tool-btn primary" title="Download all 20 QR code PNG files in a ZIP archive">
+          <button type="button" id="qrDownloadAllZipBtn" class="qr-tool-btn primary" onclick="downloadAllQrsZip()" title="Download all 20 QR code PNG files in a ZIP archive encoded with the chosen URL">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
               <polyline points="7 10 12 15 17 10"></polyline>
               <line x1="12" y1="15" x2="12" y2="3"></line>
             </svg>
-            <span>Download All (.ZIP)</span>
-          </a>
+            <span id="downloadZipLabel">Download All (.ZIP)</span>
+          </button>
         </div>
       </div>
 
@@ -3053,10 +3243,15 @@
     window.stopBackgroundMusic = stopBackgroundMusic;
 
     /* ==========================================================================
-       ORGANIZER QR CENTER (ALL 20 QR CODES VIEW & DOWNLOAD LOGIC)
+       ORGANIZER QR CENTER (DYNAMIC QR GENERATION & LIVE DOWNLOADS)
        ========================================================================== */
+    const DEV_APP_URL = 'https://ais-dev-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
+    const PRE_APP_URL = 'https://ais-pre-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
+
+    let currentBaseUrl = DEV_APP_URL;
     let blindHuntMode = false;
     let currentQrFilter = 'all';
+    let qrDataUrls = {}; // id -> dataURL
 
     const decoyList = [
       { id: 18, name: "Decoy Marker A", role: "Decoy Trap • Oops! Lost your chance" },
@@ -3085,7 +3280,34 @@
       return all;
     }
 
-    function renderQrCards() {
+    function getCleanBaseUrl() {
+      let url = currentBaseUrl.trim();
+      if (!url.startsWith('http://') && !url.startsWith('https://')) {
+        url = 'https://' + url;
+      }
+      return url.replace(/\/+$/, '');
+    }
+
+    async function generateQrDataUrl(targetUrl) {
+      if (window.QRCode && typeof window.QRCode.toDataURL === 'function') {
+        try {
+          return await window.QRCode.toDataURL(targetUrl, {
+            width: 500,
+            margin: 2,
+            errorCorrectionLevel: 'H',
+            color: {
+              dark: '#050B18',
+              light: '#FFFFFF'
+            }
+          });
+        } catch (e) {
+          console.warn('QRCode generation fallback:', e);
+        }
+      }
+      return null;
+    }
+
+    async function renderQrCards() {
       const container = document.getElementById('qrCardsGrid');
       if (!container) return;
 
@@ -3095,13 +3317,17 @@
         return true;
       });
 
-      const origin = window.location.origin;
-      const pathname = window.location.pathname;
+      const baseUrl = getCleanBaseUrl();
+      const inputEl = document.getElementById('qrBaseUrlInput');
+      if (inputEl && inputEl.value !== baseUrl) {
+        inputEl.value = baseUrl;
+      }
 
       container.innerHTML = items.map(item => {
         const numStr = item.id < 10 ? '0' + item.id : '' + item.id;
-        const targetUrl = `${origin}${pathname}?id=${item.id}`;
-        const pngSrc = `/qr-codes/QR-${numStr}.png`;
+        const targetUrl = `${baseUrl}/?id=${item.id}`;
+        // Initial fallback to static file if not cached
+        const pngSrc = qrDataUrls[item.id] || `/qr-codes/QR-${numStr}.png`;
         const displayName = blindHuntMode 
           ? (item.isDecoy ? '🎲 ??? (Decoy Trap)' : '🎓 ??? (Mystery Teacher)')
           : item.name;
@@ -3115,13 +3341,14 @@
               ${item.isDecoy ? `DECOY QR #${numStr}` : `QR CODE #${numStr}`}
             </div>
             <div class="qr-card-img-wrapper">
-              <img class="qr-card-img" src="${pngSrc}" alt="QR Code #${numStr}" loading="lazy" />
+              <img id="qr-img-${item.id}" class="qr-card-img" src="${pngSrc}" alt="QR Code #${numStr}" />
             </div>
             <div class="qr-card-name">${displayName}</div>
             <div class="qr-card-sub">${displayRole}</div>
+            <div class="qr-card-link-preview" title="${targetUrl}">🔗 ${targetUrl}</div>
             <div class="qr-cut-hint">✂ Cut along dashed line</div>
             <div class="qr-card-actions">
-              <a href="${pngSrc}" download="CSE-Hunt-QR-${numStr}.png" class="qr-card-dl-btn" title="Download QR #${numStr} PNG">
+              <a id="qr-dl-${item.id}" href="${pngSrc}" download="CSE-Hunt-QR-${numStr}.png" class="qr-card-dl-btn" title="Download QR #${numStr} PNG">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                   <polyline points="7 10 12 15 17 10"></polyline>
@@ -3129,13 +3356,155 @@
                 </svg>
                 <span>Save PNG</span>
               </a>
-              <button class="qr-card-test-btn" onclick="closeQrCenter(); navigateToId(${item.id});" title="Simulate scanning this QR code">
+              <button class="qr-card-test-btn" onclick="closeQrCenter(); navigateToId(${item.id});" title="Simulate scanning this QR code in browser">
                 Test
               </button>
             </div>
           </div>
         `;
       }).join('');
+
+      // Dynamically generate QR codes for each item with the currentBaseUrl
+      items.forEach(async (item) => {
+        const targetUrl = `${baseUrl}/?id=${item.id}`;
+        const dataUrl = await generateQrDataUrl(targetUrl);
+        if (dataUrl) {
+          qrDataUrls[item.id] = dataUrl;
+          const imgEl = document.getElementById(`qr-img-${item.id}`);
+          if (imgEl) imgEl.src = dataUrl;
+          const dlEl = document.getElementById(`qr-dl-${item.id}`);
+          if (dlEl) dlEl.href = dataUrl;
+        }
+      });
+    }
+
+    function setPresetBaseUrl(preset) {
+      document.querySelectorAll('.qr-preset-btn').forEach(btn => btn.classList.remove('active'));
+      if (preset === 'dev') {
+        currentBaseUrl = DEV_APP_URL;
+        document.getElementById('btnPresetDev')?.classList.add('active');
+        updateStatusLabel('● Live Dev App Active (Scannable Now)', '#10b981');
+      } else if (preset === 'pre') {
+        currentBaseUrl = PRE_APP_URL;
+        document.getElementById('btnPresetPre')?.classList.add('active');
+        updateStatusLabel('● Shared App URL (Deploy Required)', '#fbbf24');
+      } else if (preset === 'current') {
+        currentBaseUrl = window.location.origin;
+        document.getElementById('btnPresetCurrent')?.classList.add('active');
+        updateStatusLabel('● Current Browser Origin', '#38bdf8');
+      }
+      qrDataUrls = {}; // clear cached images so they regenerate
+      renderQrCards();
+      showToast('QR codes updated for: ' + currentBaseUrl);
+    }
+
+    function onCustomUrlChange(val) {
+      if (val && val.trim()) {
+        currentBaseUrl = val.trim();
+        document.querySelectorAll('.qr-preset-btn').forEach(btn => btn.classList.remove('active'));
+        updateStatusLabel('● Custom URL Set', '#c084fc');
+        qrDataUrls = {};
+        renderQrCards();
+      }
+    }
+
+    function applyBaseUrlFromInput() {
+      const input = document.getElementById('qrBaseUrlInput');
+      if (input && input.value) {
+        onCustomUrlChange(input.value);
+        showToast('Updated 20 QR codes for: ' + currentBaseUrl);
+      }
+    }
+
+    function updateStatusLabel(text, color) {
+      const status = document.getElementById('qrUrlStatus');
+      if (status) {
+        status.textContent = text;
+        status.style.color = color;
+      }
+    }
+
+    async function downloadAllQrsZip() {
+      const btn = document.getElementById('qrDownloadAllZipBtn');
+      const label = document.getElementById('downloadZipLabel');
+      const baseUrl = getCleanBaseUrl();
+
+      if (label) label.textContent = 'Generating ZIP...';
+      if (btn) btn.disabled = true;
+
+      try {
+        if (!window.JSZip) {
+          // Fallback to pre-built zip if JSZip is not loaded
+          window.location.href = '/qr-codes/cse-hunt-all-20-qrs.zip';
+          return;
+        }
+
+        const zip = new window.JSZip();
+        const allItems = getAllQrItems();
+        const manifest = [];
+
+        for (const item of allItems) {
+          const numStr = item.id < 10 ? '0' + item.id : '' + item.id;
+          const targetUrl = `${baseUrl}/?id=${item.id}`;
+          const filename = `QR-${numStr}.png`;
+
+          let dataUrl = qrDataUrls[item.id];
+          if (!dataUrl) {
+            dataUrl = await generateQrDataUrl(targetUrl);
+          }
+
+          if (dataUrl && dataUrl.includes(',')) {
+            const base64Data = dataUrl.split(',')[1];
+            zip.file(filename, base64Data, { base64: true });
+          }
+
+          manifest.push({
+            id: item.id,
+            number: numStr,
+            name: item.name,
+            role: item.role,
+            type: item.isDecoy ? 'Decoy Marker' : 'Teacher Tribute',
+            targetUrl
+          });
+        }
+
+        const instructions = `CSE TEACHERS' DAY LIVE HUNT 2026 - OFFICIAL QR CODES
+=====================================================
+Target URL Base: ${baseUrl}
+Generated At: ${new Date().toLocaleString()}
+
+SETUP INSTRUCTIONS:
+1. Print these 20 QR codes on paper or sticker sheets.
+2. Hide/place them around the CSE department labs, classrooms, and seminar spaces.
+3. Students and attendees scan with any smartphone camera or QR reader.
+4. QRs #01 to #17 will reveal the real faculty tributes with photos, sound fanfare & confetti!
+5. QRs #18, #19, and #20 are decoy markers ("Oops! Lost your chance").
+
+QR CODES LIST:
+${manifest.map(m => `[#${m.number}] ${m.type.toUpperCase()}: ${m.name} -> ${m.targetUrl}`).join('\n')}
+`;
+        zip.file('README-HUNT-INSTRUCTIONS.txt', instructions);
+        zip.file('manifest.json', JSON.stringify(manifest, null, 2));
+
+        const blob = await zip.generateAsync({ type: 'blob' });
+        const downloadUrl = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = 'cse-hunt-all-20-qrs.zip';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(downloadUrl);
+
+        showToast('All 20 QR codes downloaded! Encoded for ' + baseUrl);
+      } catch (err) {
+        console.error('ZIP generation error:', err);
+        showToast('Downloading pre-packaged ZIP archive...');
+        window.location.href = '/qr-codes/cse-hunt-all-20-qrs.zip';
+      } finally {
+        if (label) label.textContent = 'Download All (.ZIP)';
+        if (btn) btn.disabled = false;
+      }
     }
 
     function openQrCenter() {
@@ -3180,6 +3549,10 @@
     window.closeQrCenter = closeQrCenter;
     window.toggleBlindMode = toggleBlindMode;
     window.filterQrCards = filterQrCards;
+    window.setPresetBaseUrl = setPresetBaseUrl;
+    window.onCustomUrlChange = onCustomUrlChange;
+    window.applyBaseUrlFromInput = applyBaseUrlFromInput;
+    window.downloadAllQrsZip = downloadAllQrsZip;
 
     // Interaction listener to resume audio context if browser suspended it
     function unlockAudioOnInteraction() {

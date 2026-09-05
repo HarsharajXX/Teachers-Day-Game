@@ -8,8 +8,8 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Default base URL is the shared app URL
-const BASE_URL = 'https://ais-pre-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
+// Use command line argument or environment variable, defaulting to active development URL
+const BASE_URL = process.argv[2] || process.env.BASE_URL || 'https://ais-dev-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
 
 const teachers = [
   { id: 1, name: "Dr. Uzzal Kr Sharma", role: "Head of Department (HOD)" },
