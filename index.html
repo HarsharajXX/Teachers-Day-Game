@@ -1132,6 +1132,527 @@
         grid-template-columns: repeat(5, 1fr);
       }
     }
+
+    /* QR Hub Button in Header */
+    .qr-hub-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.15) 0%, rgba(112, 0, 255, 0.2) 100%);
+      border: 1px solid var(--border-cyan);
+      color: var(--neon-cyan);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+    .qr-hub-btn:hover {
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b4d8 100%);
+      color: #050B18;
+      box-shadow: 0 0 16px rgba(0, 242, 255, 0.4);
+      transform: translateY(-1px);
+    }
+
+    /* Organizer Download Banner on Home Screen */
+    .organizer-download-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      background: rgba(13, 21, 37, 0.75);
+      border: 1px solid rgba(0, 242, 255, 0.35);
+      border-radius: 18px;
+      padding: 16px 20px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .organizer-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .organizer-banner-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(112, 0, 255, 0.3));
+      border: 1.5px solid var(--neon-cyan);
+      color: var(--neon-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.3);
+    }
+    .organizer-banner-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .organizer-banner-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+    .organizer-banner-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .organizer-banner-buttons {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .banner-zip-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b4d8 100%);
+      color: #050b14;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 14px rgba(0, 242, 255, 0.4);
+    }
+    .banner-zip-btn:hover {
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.7);
+      transform: scale(1.03);
+      color: #050b14;
+    }
+    .banner-view-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .banner-view-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      border-color: #ffffff;
+    }
+
+    /* Fullscreen QR Code Center Modal */
+    .qr-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 11, 24, 0.88);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2000;
+      display: none;
+      overflow-y: auto;
+      padding: 24px 16px 60px 16px;
+    }
+    .qr-modal-overlay.active {
+      display: block;
+    }
+    .qr-modal-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 24px;
+      padding: 32px 28px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 242, 255, 0.2);
+      position: relative;
+    }
+    .qr-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+      padding-bottom: 20px;
+    }
+    .qr-modal-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .qr-modal-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+    .qr-close-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .qr-close-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(90deg);
+    }
+
+    /* Modal Toolbar */
+    .qr-modal-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: rgba(13, 21, 37, 0.7);
+      border: 1px solid rgba(0, 242, 255, 0.25);
+      border-radius: 16px;
+      padding: 12px 18px;
+      margin-bottom: 28px;
+    }
+    .qr-filter-group {
+      display: flex;
+      gap: 6px;
+    }
+    .qr-filter-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .qr-filter-btn.active {
+      background: rgba(0, 242, 255, 0.15);
+      color: var(--neon-cyan);
+      border-color: rgba(0, 242, 255, 0.4);
+    }
+    .qr-toolbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .qr-tool-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+    .qr-tool-btn.primary {
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b4d8 100%);
+      color: #050b14;
+      border: none;
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.35);
+    }
+    .qr-tool-btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .qr-tool-btn:hover {
+      transform: translateY(-1px);
+    }
+    .blind-mode-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(112, 0, 255, 0.15);
+      border: 1px solid rgba(112, 0, 255, 0.4);
+      color: #c084fc;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .blind-mode-btn.active {
+      background: #7000FF;
+      color: #ffffff;
+      border-color: #7000FF;
+      box-shadow: 0 0 14px rgba(112, 0, 255, 0.5);
+    }
+
+    /* QR Cards Grid */
+    .qr-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 18px;
+    }
+    .printable-qr-card {
+      position: relative;
+      background: rgba(13, 21, 37, 0.9);
+      border: 1.5px dashed rgba(0, 242, 255, 0.35);
+      border-radius: 16px;
+      padding: 18px 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .printable-qr-card:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.25);
+      transform: translateY(-2px);
+    }
+    .printable-qr-card.is-decoy {
+      border-color: rgba(255, 0, 85, 0.35);
+    }
+    .printable-qr-card.is-decoy:hover {
+      border-color: #ff0055;
+      box-shadow: 0 0 20px rgba(255, 0, 85, 0.25);
+    }
+    .qr-card-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: rgba(0, 242, 255, 0.15);
+      color: var(--neon-cyan);
+      border: 1px solid rgba(0, 242, 255, 0.35);
+      margin-bottom: 12px;
+    }
+    .printable-qr-card.is-decoy .qr-card-badge {
+      background: rgba(255, 0, 85, 0.15);
+      color: #ff0055;
+      border-color: rgba(255, 0, 85, 0.35);
+    }
+    .qr-card-img-wrapper {
+      width: 170px;
+      height: 170px;
+      background: #ffffff;
+      padding: 8px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      image-rendering: pixelated;
+    }
+    .qr-card-name {
+      font-size: 13px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.3;
+      margin-bottom: 3px;
+    }
+    .qr-card-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .qr-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+    }
+    .qr-card-dl-btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(0, 242, 255, 0.12);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+      color: var(--neon-cyan);
+      padding: 6px 8px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .qr-card-dl-btn:hover {
+      background: var(--neon-cyan);
+      color: #050b14;
+    }
+    .qr-card-test-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .qr-card-test-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Print Specific Sheet Styles */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 10mm;
+      }
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .bg-ambient-orb,
+      .toast,
+      .top-action-bar,
+      .app-header,
+      .app-footer,
+      .cyber-card,
+      .music-player-banner,
+      .reveal-card,
+      .qr-modal-header,
+      .qr-modal-toolbar,
+      .qr-card-actions,
+      #confettiCanvas,
+      .no-print {
+        display: none !important;
+      }
+      .qr-modal-overlay {
+        position: static !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        display: block !important;
+        overflow: visible !important;
+      }
+      .qr-modal-container {
+        border: none !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .qr-print-cover-header {
+        display: block !important;
+        text-align: center;
+        border-bottom: 2px solid #000000;
+        padding-bottom: 8px;
+        margin-bottom: 16px;
+      }
+      .qr-print-cover-title {
+        font-size: 18pt;
+        font-weight: 900;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #000000;
+      }
+      .qr-print-cover-sub {
+        font-size: 10pt;
+        color: #555555;
+        margin-top: 2px;
+      }
+      .qr-cards-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 12px !important;
+        page-break-inside: auto;
+      }
+      .printable-qr-card {
+        border: 2px dashed #000000 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        border-radius: 8px !important;
+        padding: 12px 8px !important;
+        box-shadow: none !important;
+      }
+      .qr-card-badge {
+        background: #000000 !important;
+        color: #ffffff !important;
+        border: none !important;
+        font-size: 8.5pt !important;
+        padding: 2px 8px !important;
+        margin-bottom: 6px !important;
+      }
+      .qr-card-img-wrapper {
+        width: 150px !important;
+        height: 150px !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin-bottom: 6px !important;
+      }
+      .qr-card-name {
+        color: #000000 !important;
+        font-size: 9.5pt !important;
+        font-weight: 800 !important;
+      }
+      .qr-card-sub {
+        color: #555555 !important;
+        font-size: 7.5pt !important;
+        height: auto !important;
+        margin-bottom: 0 !important;
+      }
+      .qr-cut-hint {
+        display: block !important;
+        font-size: 7pt;
+        color: #777;
+        margin-top: 4px;
+      }
+    }
+    .qr-print-cover-header, .qr-cut-hint {
+      display: none;
+    }
+
+    @media (max-width: 600px) {
+      .organizer-download-banner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .organizer-banner-buttons {
+        flex-direction: column;
+      }
+      .banner-zip-btn, .banner-view-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .qr-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
   </style>
 </head>
 <body>
@@ -1159,6 +1680,17 @@
       </div>
 
       <div class="audio-controls-group">
+        <!-- QR Code Sheet & Download Modal Button -->
+        <button id="qrHubTopBtn" class="qr-hub-btn" title="Download & Print all 20 QR Codes" onclick="openQrCenter()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span>QR Sheet (20)</span>
+        </button>
+
         <!-- Campus Beats Anthem Music Toggle -->
         <button id="musicToggleBtn" class="music-btn" title="Toggle Teachers' Day Anthem Music" onclick="toggleBackgroundMusic()">
           <div class="equalizer-bars" id="musicEqBars">
@@ -1191,6 +1723,68 @@
     <!-- Content Area: Switchable between Home View and Reveal View -->
     <div id="appRoot" style="width: 100%;"></div>
   </main>
+
+  <!-- Fullscreen QR Code Center & Printable Sheet Modal -->
+  <div id="qrModalOverlay" class="qr-modal-overlay" onclick="if (event.target === this) closeQrCenter()">
+    <div class="qr-modal-container">
+      <div class="qr-print-cover-header">
+        <div class="qr-print-cover-title">Department of Computer Science & Engineering</div>
+        <div class="qr-print-cover-sub">Teachers' Day Live QR Hunt 2026 • Official Printable Campus Markers</div>
+      </div>
+
+      <div class="qr-modal-header">
+        <div>
+          <div class="qr-modal-title">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--neon-cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"></rect>
+              <rect x="14" y="3" width="7" height="7"></rect>
+              <rect x="14" y="14" width="7" height="7"></rect>
+              <rect x="3" y="14" width="7" height="7"></rect>
+            </svg>
+            <span>Live Hunt QR Center (20 Codes)</span>
+          </div>
+          <div class="qr-modal-sub">
+            17 real department faculty tribute markers + 3 decoy trap markers. High-resolution PNGs ready for printing and campus placement.
+          </div>
+        </div>
+        <button class="qr-close-btn" onclick="closeQrCenter()" title="Close">&times;</button>
+      </div>
+
+      <!-- Controls & Quick Actions -->
+      <div class="qr-modal-toolbar">
+        <div class="qr-filter-group">
+          <button id="filterAllBtn" class="qr-filter-btn active" onclick="filterQrCards('all')">All (20)</button>
+          <button id="filterTeachersBtn" class="qr-filter-btn" onclick="filterQrCards('teachers')">Faculty Tributes (17)</button>
+          <button id="filterDecoysBtn" class="qr-filter-btn" onclick="filterQrCards('decoys')">Decoy Traps (3)</button>
+        </div>
+
+        <div class="qr-toolbar-actions">
+          <button id="blindModeBtn" class="blind-mode-btn" onclick="toggleBlindMode()" title="Toggle showing/hiding faculty names so students must scan to discover">
+            <span>🎭 Blind Hunt Mode: OFF</span>
+          </button>
+          <button class="qr-tool-btn secondary" onclick="window.print()" title="Print cards directly to paper or save as PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 6 2 18 2 18 9"></polyline>
+              <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+              <rect x="6" y="14" width="12" height="8"></rect>
+            </svg>
+            <span>Print Sheet (PDF)</span>
+          </button>
+          <a href="/qr-codes/cse-hunt-all-20-qrs.zip" download="cse-hunt-all-20-qrs.zip" class="qr-tool-btn primary" title="Download all 20 QR code PNG files in a ZIP archive">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            <span>Download All (.ZIP)</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Grid of 20 Cards -->
+      <div id="qrCardsGrid" class="qr-cards-grid"></div>
+    </div>
+  </div>
 
   <script>
     /* ==========================================================================
@@ -2026,6 +2620,13 @@
         window.isCurrentRevealView = false;
         renderHomeView();
       }
+      
+      // Auto-open QR Center if ?view=qrs is present in query parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('view') === 'qrs') {
+        setTimeout(openQrCenter, 50);
+      }
+
       updateMusicUi(isMusicPlaying);
     }
 
@@ -2124,6 +2725,37 @@
                 <div class="step-text">The crowd counts down your attempt as this screen instantly decrypts the teacher's profile!</div>
               </div>
             </div>
+          </div>
+        </div>
+
+        <!-- Organizer QR Hub Banner -->
+        <div class="organizer-download-banner">
+          <div class="organizer-banner-left">
+            <div class="organizer-banner-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+            </div>
+            <div class="organizer-banner-info">
+              <div class="organizer-banner-title">Organizer QR Hub • 20 Codes Ready</div>
+              <div class="organizer-banner-desc">Download all 20 QR PNGs (.ZIP) or open printable sheet for campus setup</div>
+            </div>
+          </div>
+          <div class="organizer-banner-buttons">
+            <a href="/qr-codes/cse-hunt-all-20-qrs.zip" download="cse-hunt-all-20-qrs.zip" class="banner-zip-btn" title="Download all 20 QR codes in a single ZIP file">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Download ZIP</span>
+            </a>
+            <button type="button" class="banner-view-btn" onclick="openQrCenter()">
+              <span>View & Print Sheet</span>
+            </button>
           </div>
         </div>
 
@@ -2419,6 +3051,135 @@
     window.toggleBackgroundMusic = toggleBackgroundMusic;
     window.startBackgroundMusic = startBackgroundMusic;
     window.stopBackgroundMusic = stopBackgroundMusic;
+
+    /* ==========================================================================
+       ORGANIZER QR CENTER (ALL 20 QR CODES VIEW & DOWNLOAD LOGIC)
+       ========================================================================== */
+    let blindHuntMode = false;
+    let currentQrFilter = 'all';
+
+    const decoyList = [
+      { id: 18, name: "Decoy Marker A", role: "Decoy Trap • Oops! Lost your chance" },
+      { id: 19, name: "Decoy Marker B", role: "Decoy Trap • Oops! Lost your chance" },
+      { id: 20, name: "Decoy Marker C", role: "Decoy Trap • Oops! Lost your chance" }
+    ];
+
+    function getAllQrItems() {
+      const all = [];
+      teachers.forEach(t => {
+        all.push({
+          id: t.id,
+          name: t.name,
+          role: t.designation,
+          isDecoy: false
+        });
+      });
+      decoyList.forEach(d => {
+        all.push({
+          id: d.id,
+          name: d.name,
+          role: d.role,
+          isDecoy: true
+        });
+      });
+      return all;
+    }
+
+    function renderQrCards() {
+      const container = document.getElementById('qrCardsGrid');
+      if (!container) return;
+
+      const items = getAllQrItems().filter(item => {
+        if (currentQrFilter === 'teachers') return !item.isDecoy;
+        if (currentQrFilter === 'decoys') return item.isDecoy;
+        return true;
+      });
+
+      const origin = window.location.origin;
+      const pathname = window.location.pathname;
+
+      container.innerHTML = items.map(item => {
+        const numStr = item.id < 10 ? '0' + item.id : '' + item.id;
+        const targetUrl = `${origin}${pathname}?id=${item.id}`;
+        const pngSrc = `/qr-codes/QR-${numStr}.png`;
+        const displayName = blindHuntMode 
+          ? (item.isDecoy ? '🎲 ??? (Decoy Trap)' : '🎓 ??? (Mystery Teacher)')
+          : item.name;
+        const displayRole = blindHuntMode 
+          ? 'Scan to decrypt identity'
+          : item.role;
+
+        return `
+          <div class="printable-qr-card ${item.isDecoy ? 'is-decoy' : ''}" id="card-qr-${item.id}">
+            <div class="qr-card-badge">
+              ${item.isDecoy ? `DECOY QR #${numStr}` : `QR CODE #${numStr}`}
+            </div>
+            <div class="qr-card-img-wrapper">
+              <img class="qr-card-img" src="${pngSrc}" alt="QR Code #${numStr}" loading="lazy" />
+            </div>
+            <div class="qr-card-name">${displayName}</div>
+            <div class="qr-card-sub">${displayRole}</div>
+            <div class="qr-cut-hint">✂ Cut along dashed line</div>
+            <div class="qr-card-actions">
+              <a href="${pngSrc}" download="CSE-Hunt-QR-${numStr}.png" class="qr-card-dl-btn" title="Download QR #${numStr} PNG">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Save PNG</span>
+              </a>
+              <button class="qr-card-test-btn" onclick="closeQrCenter(); navigateToId(${item.id});" title="Simulate scanning this QR code">
+                Test
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openQrCenter() {
+      const modal = document.getElementById('qrModalOverlay');
+      if (modal) {
+        modal.classList.add('active');
+        renderQrCards();
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeQrCenter() {
+      const modal = document.getElementById('qrModalOverlay');
+      if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+
+    function toggleBlindMode() {
+      blindHuntMode = !blindHuntMode;
+      const btn = document.getElementById('blindModeBtn');
+      if (btn) {
+        btn.classList.toggle('active', blindHuntMode);
+        btn.innerHTML = blindHuntMode 
+          ? '<span>🎭 Blind Hunt Mode: ON</span>' 
+          : '<span>🎭 Blind Hunt Mode: OFF</span>';
+      }
+      renderQrCards();
+    }
+
+    function filterQrCards(type) {
+      currentQrFilter = type;
+      document.querySelectorAll('.qr-filter-btn').forEach(btn => btn.classList.remove('active'));
+      if (type === 'all') document.getElementById('filterAllBtn')?.classList.add('active');
+      if (type === 'teachers') document.getElementById('filterTeachersBtn')?.classList.add('active');
+      if (type === 'decoys') document.getElementById('filterDecoysBtn')?.classList.add('active');
+      renderQrCards();
+    }
+
+    window.openQrCenter = openQrCenter;
+    window.closeQrCenter = closeQrCenter;
+    window.toggleBlindMode = toggleBlindMode;
+    window.filterQrCards = filterQrCards;
 
     // Interaction listener to resume audio context if browser suspended it
     function unlockAudioOnInteraction() {
