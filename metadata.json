@@ -1,0 +1,6 @@
+{
+  "name": "CSE Teachers' Day Live Hunt 2026",
+  "description": "High-energy Teachers' Day QR code live hunt and instant tribute reveal application for the CSE department.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

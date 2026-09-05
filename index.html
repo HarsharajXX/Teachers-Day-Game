@@ -1,0 +1,2440 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>CSE Teachers' Day Live Hunt 2026</title>
+  <meta name="description" content="High-energy Teachers' Day QR code live hunt and instant tribute reveal application for the CSE department." />
+  <meta property="og:title" content="CSE Teachers' Day Live Hunt 2026" />
+  <meta property="og:description" content="High-energy Teachers' Day QR code live hunt and instant tribute reveal application for the CSE department." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    /* ==========================================================================
+       IMMERSIVE UI THEME (DEEP SPACE NAVY #050B18, NEON CYAN #00F2FF, PURPLE #7000FF)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-dark: #050B18;
+      --bg-card: #0D1525;
+      --bg-card-hover: #142038;
+      --neon-cyan: #00F2FF;
+      --neon-purple: #7000FF;
+      --border-cyan: rgba(0, 242, 255, 0.3);
+      --border-cyan-glow: #00F2FF;
+      --border-cyan-dim: rgba(0, 242, 255, 0.15);
+      --border-purple: rgba(112, 0, 255, 0.35);
+      --text-white: #ffffff;
+      --text-muted: #94a3b8;
+      --text-cyan: #00F2FF;
+      --text-blue: #38bdf8;
+      --text-slate: #cbd5e1;
+      --accent-gold: #fbbf24;
+      --accent-emerald: #10b981;
+      --glow-shadow: 0 0 25px rgba(0, 242, 255, 0.4);
+      --glow-card: 0 25px 50px -12px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 242, 255, 0.12);
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.5;
+      background-image: 
+        radial-gradient(1px 1px at 20% 25%, rgba(255, 255, 255, 0.7) 1px, transparent 0),
+        radial-gradient(1.5px 1.5px at 78% 18%, rgba(0, 242, 255, 0.75) 1px, transparent 0),
+        radial-gradient(1px 1px at 42% 65%, rgba(112, 0, 255, 0.6) 1px, transparent 0),
+        radial-gradient(1.5px 1.5px at 85% 82%, rgba(255, 255, 255, 0.5) 1px, transparent 0),
+        radial-gradient(1px 1px at 15% 75%, rgba(0, 242, 255, 0.6) 1px, transparent 0),
+        radial-gradient(circle at 50% 0%, rgba(0, 242, 255, 0.08) 0%, transparent 55%);
+      background-size: 100% 100%;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient background glowing orbs matching Immersive UI */
+    .bg-ambient-orb {
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+      filter: blur(140px);
+      opacity: 0.22;
+    }
+    .orb-1 {
+      top: -10%;
+      left: -10%;
+      width: 500px;
+      height: 500px;
+      background: var(--neon-cyan);
+    }
+    .orb-2 {
+      bottom: -10%;
+      right: -10%;
+      width: 500px;
+      height: 500px;
+      background: var(--neon-purple);
+    }
+
+    /* Full-screen Confetti Canvas */
+    #confettiCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* Main Container */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 24px 16px 80px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Top Sound & Live Controls Bar */
+    .top-action-bar {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(0, 242, 255, 0.08);
+      border: 1px solid var(--border-cyan);
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 242, 255, 0.25);
+    }
+
+    .pulse-radar {
+      width: 8px;
+      height: 8px;
+      background-color: var(--neon-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.7);
+      animation: radarPulse 1.8s infinite;
+    }
+
+    @keyframes radarPulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 242, 255, 0.8);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(0, 242, 255, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(0, 242, 255, 0);
+      }
+    }
+
+    .top-action-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 24px;
+      gap: 12px;
+    }
+
+    .audio-controls-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .music-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(13, 21, 37, 0.85);
+      border: 1px solid var(--border-cyan);
+      color: var(--text-muted);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      backdrop-filter: blur(8px);
+    }
+    .music-btn:hover {
+      color: #ffffff;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 14px rgba(0, 242, 255, 0.35);
+      transform: translateY(-1px);
+    }
+    .music-btn.playing {
+      background: linear-gradient(135deg, rgba(112, 0, 255, 0.32) 0%, rgba(0, 242, 255, 0.2) 100%);
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      box-shadow: 0 0 16px rgba(0, 242, 255, 0.4);
+    }
+
+    /* Animated Mini Equalizer Bars */
+    .equalizer-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2.5px;
+      height: 12px;
+      width: 13px;
+    }
+    .eq-bar {
+      width: 2px;
+      background: #64748b;
+      border-radius: 1px;
+      height: 3px;
+      transition: background 0.2s ease;
+    }
+    .music-btn.playing .eq-bar,
+    .music-player-banner.playing .eq-bar {
+      background: var(--neon-cyan);
+      animation: eqBounce 0.9s ease-in-out infinite alternate;
+    }
+    .music-btn.playing .bar-1, .music-player-banner.playing .bar-1 { height: 60%; animation-delay: 0.1s; animation-duration: 0.75s; }
+    .music-btn.playing .bar-2, .music-player-banner.playing .bar-2 { height: 100%; animation-delay: 0.25s; animation-duration: 0.6s; }
+    .music-btn.playing .bar-3, .music-player-banner.playing .bar-3 { height: 45%; animation-delay: 0.15s; animation-duration: 0.85s; }
+    .music-btn.playing .bar-4, .music-player-banner.playing .bar-4 { height: 85%; animation-delay: 0.35s; animation-duration: 0.7s; }
+
+    @keyframes eqBounce {
+      0% { height: 20%; }
+      50% { height: 100%; }
+      100% { height: 35%; }
+    }
+
+    .sound-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(13, 21, 37, 0.8);
+      border: 1px solid var(--border-cyan);
+      color: var(--text-muted);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      font-size: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      backdrop-filter: blur(8px);
+    }
+    .sound-btn:hover {
+      color: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.3);
+    }
+    .sound-btn.active {
+      color: var(--neon-cyan);
+      border-color: var(--neon-cyan);
+      background: rgba(0, 242, 255, 0.12);
+    }
+
+    /* Interactive Campus Beats Banner */
+    .music-player-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: linear-gradient(135deg, rgba(13, 21, 37, 0.9) 0%, rgba(20, 15, 45, 0.8) 100%);
+      border: 1px solid rgba(0, 242, 255, 0.3);
+      border-radius: 18px;
+      padding: 14px 18px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+    .music-player-banner:hover {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 22px rgba(0, 242, 255, 0.25);
+      transform: translateY(-1px);
+    }
+    .music-player-banner.playing {
+      border-color: var(--neon-cyan);
+      background: linear-gradient(135deg, rgba(13, 27, 50, 0.95) 0%, rgba(45, 18, 75, 0.88) 100%);
+      box-shadow: 0 0 26px rgba(0, 242, 255, 0.35);
+    }
+    .music-banner-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-grow: 1;
+      min-width: 0;
+    }
+    .music-icon-disc {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.2), rgba(112, 0, 255, 0.35));
+      border: 1.5px solid rgba(0, 242, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .music-player-banner.playing .music-icon-disc {
+      animation: spinDisc 3.5s linear infinite;
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+    }
+    @keyframes spinDisc {
+      100% { transform: rotate(360deg); }
+    }
+    .music-banner-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .music-banner-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .music-banner-pill {
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 2px 7px;
+      border-radius: 9999px;
+      background: rgba(0, 242, 255, 0.15);
+      color: var(--neon-cyan);
+      border: 1px solid rgba(0, 242, 255, 0.4);
+    }
+    .music-banner-sub {
+      font-size: 12px;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-top: 2px;
+    }
+    .music-banner-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .music-banner-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      background: linear-gradient(135deg, var(--neon-cyan) 0%, #00b4d8 100%);
+      color: #050b14;
+      font-weight: 800;
+      font-size: 12px;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: all 0.2s ease;
+      box-shadow: 0 0 14px rgba(0, 242, 255, 0.4);
+    }
+    .music-banner-btn:hover {
+      box-shadow: 0 0 20px rgba(0, 242, 255, 0.7);
+      transform: scale(1.03);
+    }
+    .music-player-banner.playing .music-banner-btn {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: none;
+    }
+
+    /* App Header (Immersive UI Typography with Eyebrow Flanking Lines & Italic Gradient Title) */
+    .app-header {
+      text-align: center;
+      margin-bottom: 28px;
+      width: 100%;
+    }
+
+    .header-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .header-tag::before {
+      content: "";
+      display: inline-block;
+      height: 1px;
+      width: 44px;
+      background: linear-gradient(to right, transparent, var(--neon-cyan));
+    }
+    .header-tag::after {
+      content: "";
+      display: inline-block;
+      height: 1px;
+      width: 44px;
+      background: linear-gradient(to left, transparent, var(--neon-cyan));
+    }
+
+    .header-title {
+      font-size: 40px;
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.04em;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    }
+
+    .header-sub {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      text-shadow: 0 0 14px rgba(0, 242, 255, 0.4);
+    }
+
+    /* Cyber Card Container with Immersive Glow Aura */
+    .cyber-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 24px;
+      padding: 34px 26px;
+      width: 100%;
+      box-shadow: var(--glow-card);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+    }
+
+    .cyber-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(0, 242, 255, 0.25), rgba(112, 0, 255, 0.25));
+      z-index: -1;
+      filter: blur(14px);
+      pointer-events: none;
+    }
+
+    /* High-tech corner bracket accents */
+    .corner-bracket {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--border-cyan-glow);
+      pointer-events: none;
+    }
+    .corner-tl { top: 8px; left: 8px; border-right: none; border-bottom: none; }
+    .corner-tr { top: 8px; right: 8px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: 8px; left: 8px; border-right: none; border-top: none; }
+    .corner-br { bottom: 8px; right: 8px; border-left: none; border-top: none; }
+
+    /* Central Scanning Section (Home View) */
+    .scan-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 8px 0 20px 0;
+    }
+
+    .qr-frame {
+      position: relative;
+      width: 170px;
+      height: 170px;
+      background: #09101f;
+      border: 2px solid var(--neon-cyan);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      box-shadow: 0 0 30px rgba(0, 242, 255, 0.35), inset 0 0 20px rgba(0, 242, 255, 0.1);
+      overflow: hidden;
+    }
+
+    .laser-scan-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #00F2FF, transparent);
+      box-shadow: 0 0 14px 2px #00F2FF;
+      animation: scanLaser 2.6s ease-in-out infinite alternate;
+      z-index: 5;
+    }
+
+    @keyframes scanLaser {
+      0% { top: 5%; opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { top: 92%; opacity: 0.3; }
+    }
+
+    .qr-icon-svg {
+      width: 104px;
+      height: 104px;
+      color: var(--neon-cyan);
+      filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.6));
+    }
+
+    .scan-title {
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
+
+    .scan-description {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 460px;
+      margin: 0 auto 10px auto;
+      line-height: 1.6;
+    }
+
+    /* 3-Step Instructions */
+    .steps-section {
+      width: 100%;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .step-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(13, 21, 37, 0.7);
+      border: 1px solid rgba(0, 242, 255, 0.18);
+      border-radius: 16px;
+      padding: 14px 18px;
+      transition: all 0.25s ease;
+    }
+
+    .step-item:hover {
+      border-color: var(--neon-cyan);
+      background: rgba(18, 30, 56, 0.85);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 20px rgba(0, 242, 255, 0.12);
+    }
+
+    .step-badge {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      border-radius: 50%;
+      background: rgba(0, 242, 255, 0.1);
+      border: 1px solid var(--border-cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 242, 255, 0.25);
+    }
+
+    .step-content {
+      flex: 1;
+    }
+
+    .step-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 2px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    /* Demo / Quick Test Drawer */
+    .quick-test-section {
+      width: 100%;
+      margin-top: 24px;
+      background: rgba(13, 21, 37, 0.65);
+      border: 1px dashed rgba(0, 242, 255, 0.3);
+      border-radius: 18px;
+      padding: 18px 20px;
+    }
+
+    .quick-test-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .quick-test-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--neon-cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .quick-test-toggle {
+      font-size: 11px;
+      color: var(--text-muted);
+      background: rgba(0, 242, 255, 0.1);
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 242, 255, 0.2);
+    }
+
+    .quick-test-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(54px, 1fr));
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .test-chip {
+      background: rgba(16, 26, 48, 0.9);
+      border: 1px solid rgba(0, 242, 255, 0.25);
+      color: var(--text-white);
+      border-radius: 10px;
+      padding: 8px 4px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+
+    .test-chip span {
+      font-size: 9px;
+      font-weight: 600;
+      color: var(--text-blue);
+      text-transform: uppercase;
+    }
+
+    .test-chip:hover {
+      background: var(--neon-cyan);
+      color: #050B18;
+      border-color: var(--neon-cyan);
+      transform: scale(1.05);
+      box-shadow: 0 0 16px rgba(0, 242, 255, 0.6);
+    }
+    .test-chip:hover span {
+      color: #050B18;
+    }
+
+    .test-chip.random-btn {
+      grid-column: span 2;
+      background: rgba(0, 242, 255, 0.15);
+      border-color: var(--border-cyan);
+      color: var(--neon-cyan);
+      font-size: 12px;
+    }
+    .test-chip.random-btn:hover {
+      background: var(--neon-cyan);
+      color: #050B18;
+    }
+
+    /* ==========================================================================
+       REVEAL EXPERIENCE (WHEN ?id=X IS PRESENT - IMMERSIVE UI THEME)
+       ========================================================================== */
+    .reveal-wrapper {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: revealBoot 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes revealBoot {
+      0% {
+        opacity: 0;
+        transform: translateY(28px) scale(0.94);
+        filter: blur(8px);
+      }
+      60% {
+        filter: blur(0);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .reveal-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-cyan);
+      border-radius: 24px;
+      padding: 38px 28px;
+      width: 100%;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 35px rgba(0, 242, 255, 0.15);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    /* Glowing radar pulse ring around card (Immersive UI dual gradient #00F2FF to #7000FF) */
+    .reveal-glow-border {
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, #00F2FF, #7000FF);
+      z-index: -1;
+      opacity: 0.28;
+      filter: blur(14px);
+      animation: borderShift 7s linear infinite alternate;
+    }
+
+    @keyframes borderShift {
+      0% { opacity: 0.25; filter: blur(12px); }
+      100% { opacity: 0.38; filter: blur(18px); }
+    }
+
+    .reveal-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(0, 242, 255, 0.15);
+    }
+
+    .verified-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent-emerald);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 4px 12px;
+      border-radius: 9999px;
+    }
+
+    .teacher-id-chip {
+      font-size: 12px;
+      font-weight: 800;
+      color: #050B18;
+      letter-spacing: 0.08em;
+      background: var(--neon-cyan);
+      border: none;
+      padding: 4px 14px;
+      border-radius: 9999px;
+      box-shadow: 0 0 14px rgba(0, 242, 255, 0.4);
+    }
+
+    /* Teacher Avatar Frame (Modern rounded-2xl geometry with Immersive cyan glow) */
+    .avatar-wrapper {
+      position: relative;
+      width: 180px;
+      height: 180px;
+      margin: 4px auto 22px auto;
+    }
+
+    .avatar-ring {
+      display: none; /* Immersive UI uses crisp 2xl geometry */
+    }
+
+    .avatar-img-box {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+      border: 2px solid var(--neon-cyan);
+      background: #09101f;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 28px rgba(0, 242, 255, 0.45);
+    }
+
+    .teacher-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .avatar-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #091326 0%, #0369a1 100%);
+      color: var(--neon-cyan);
+      font-size: 44px;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    /* Name & Title */
+    .teacher-name {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .teacher-designation {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--neon-cyan);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 16px;
+    }
+
+    /* Subtle gradient divider from Immersive UI */
+    .gradient-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 242, 255, 0.4) 50%, transparent 100%);
+      margin: 4px 0 22px 0;
+    }
+
+    /* Personalized Heartfelt Message Box (Serif Italic leading warmth) */
+    .tribute-box {
+      position: relative;
+      width: 100%;
+      background: rgba(8, 14, 28, 0.6);
+      border: 1px solid rgba(0, 242, 255, 0.2);
+      border-radius: 20px;
+      padding: 24px 22px;
+      margin-bottom: 24px;
+      box-shadow: inset 0 0 20px rgba(0, 242, 255, 0.04);
+    }
+
+    .quote-icon {
+      position: absolute;
+      top: -14px;
+      left: 20px;
+      background: #050B18;
+      border: 1px solid var(--border-cyan);
+      color: var(--neon-cyan);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      font-weight: 900;
+      box-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
+    }
+
+    .tribute-badge-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--neon-cyan);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      opacity: 0.9;
+    }
+
+    .teacher-message {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #cbd5e1;
+      font-style: italic;
+      font-family: Georgia, Cambria, "Times New Roman", Times, serif;
+      position: relative;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Footer department stamp inside card */
+    .card-footer-stamp {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Action Buttons (Immersive UI Vibrant Cyan and Translucent Dark) */
+    .reveal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      width: 100%;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      min-height: 48px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00F2FF 0%, #0099FF 100%);
+      color: #050B18;
+      border: none;
+      box-shadow: 0 0 24px rgba(0, 242, 255, 0.45);
+      font-weight: 800;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 34px rgba(0, 242, 255, 0.7);
+      background: linear-gradient(135deg, #33f4ff 0%, #1ab0ff 100%);
+    }
+
+    .btn-secondary {
+      background: #0D1525;
+      color: #ffffff;
+      border: 1px solid rgba(0, 242, 255, 0.35);
+    }
+    .btn-secondary:hover {
+      background: #14223d;
+      border-color: var(--neon-cyan);
+      color: var(--neon-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 0 16px rgba(0, 242, 255, 0.25);
+    }
+
+    .btn-share {
+      background: linear-gradient(135deg, rgba(112, 0, 255, 0.75) 0%, rgba(0, 242, 255, 0.85) 100%);
+      color: #ffffff;
+      border: 1px solid rgba(0, 242, 255, 0.45);
+      box-shadow: 0 0 20px rgba(112, 0, 255, 0.35);
+      font-weight: 700;
+    }
+    .btn-share:hover {
+      background: linear-gradient(135deg, rgba(112, 0, 255, 0.95) 0%, rgba(0, 242, 255, 1) 100%);
+      color: #050B18;
+      border-color: var(--neon-cyan);
+      transform: translateY(-2px);
+      box-shadow: 0 0 28px rgba(0, 242, 255, 0.6);
+    }
+
+    /* Dummy Decoy QR Screen */
+    .dummy-qr-box {
+      text-align: center;
+      padding: 44px 24px;
+      max-width: 580px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .dummy-qr-icon-wrapper {
+      position: relative;
+      width: 88px;
+      height: 88px;
+      margin: 0 auto 20px auto;
+      border-radius: 50%;
+      background: rgba(112, 0, 255, 0.15);
+      border: 2px dashed rgba(0, 242, 255, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 30px rgba(112, 0, 255, 0.3);
+      animation: pulseDecoy 2.5s ease-in-out infinite alternate;
+    }
+    @keyframes pulseDecoy {
+      0% { transform: scale(1); box-shadow: 0 0 20px rgba(112, 0, 255, 0.25); }
+      100% { transform: scale(1.05); box-shadow: 0 0 35px rgba(0, 242, 255, 0.45); }
+    }
+    .dummy-qr-icon {
+      font-size: 40px;
+      line-height: 1;
+    }
+    .dummy-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      color: #fb923c;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(251, 146, 60, 0.12);
+      border: 1px solid rgba(251, 146, 60, 0.4);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      margin-bottom: 18px;
+    }
+    .dummy-qr-title {
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+    .dummy-qr-desc {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 480px;
+      margin: 0 auto 28px auto;
+    }
+
+    /* Not Found View */
+    .not-found-box {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    .not-found-icon {
+      font-size: 48px;
+      margin-bottom: 16px;
+      color: #f87171;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0D1525;
+      border: 1px solid var(--neon-cyan);
+      color: #ffffff;
+      padding: 10px 22px;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 0 24px rgba(0, 242, 255, 0.4);
+      z-index: 1000;
+      opacity: 0;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Mobile adjustments */
+    @media (max-width: 480px) {
+      .app-viewport {
+        padding: 16px 12px 60px 12px;
+      }
+      .header-title {
+        font-size: 30px;
+      }
+      .header-sub {
+        font-size: 13px;
+        letter-spacing: 0.18em;
+      }
+      .cyber-card {
+        padding: 24px 16px;
+      }
+      .reveal-card {
+        padding: 26px 16px;
+      }
+      .teacher-name {
+        font-size: 24px;
+      }
+      .teacher-designation {
+        font-size: 12px;
+      }
+      .teacher-message {
+        font-size: 16px;
+      }
+      .btn {
+        width: 100%;
+      }
+      .quick-test-grid {
+        grid-template-columns: repeat(5, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="bg-ambient-orb orb-1"></div>
+  <div class="bg-ambient-orb orb-2"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span id="toastMsg">Link copied to clipboard!</span>
+  </div>
+
+  <main class="app-viewport">
+    <!-- Top Action Bar -->
+    <header class="top-action-bar">
+      <div class="live-badge">
+        <span class="pulse-radar"></span>
+        <span>LIVE HUNT 2026</span>
+      </div>
+
+      <div class="audio-controls-group">
+        <!-- Campus Beats Anthem Music Toggle -->
+        <button id="musicToggleBtn" class="music-btn" title="Toggle Teachers' Day Anthem Music" onclick="toggleBackgroundMusic()">
+          <div class="equalizer-bars" id="musicEqBars">
+            <span class="eq-bar bar-1"></span>
+            <span class="eq-bar bar-2"></span>
+            <span class="eq-bar bar-3"></span>
+            <span class="eq-bar bar-4"></span>
+          </div>
+          <span id="musicLabel">Music: OFF</span>
+        </button>
+
+        <!-- Sound FX Toggle -->
+        <button id="soundToggleBtn" class="sound-btn" title="Toggle audio sound effects">
+          <svg id="soundIconOn" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <span id="soundLabel">SFX: ON</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Header -->
+    <div class="app-header">
+      <div class="header-tag">Department of Computer Science & Engineering</div>
+      <h1 class="header-title">CSE Teachers' Day</h1>
+      <div class="header-sub">Live Hunt 2026</div>
+    </div>
+
+    <!-- Content Area: Switchable between Home View and Reveal View -->
+    <div id="appRoot" style="width: 100%;"></div>
+  </main>
+
+  <script>
+    /* ==========================================================================
+       DATA STRUCTURE: 17 CSE TEACHERS + 3 DECOY / DUMMY QRs (#18, #19, #20)
+       ========================================================================== */
+    const DUMMY_IDS = [18, 19, 20];
+
+    const teachers = [
+      {
+        id: 1,
+        name: "Dr. Uzzal Kr Sharma",
+        designation: "Head of Department (HOD)",
+        photo_url: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are like the backbone of the society, guiding and shaping us with wisdom, patience, and care. Thank you so much for everything!"
+      },
+      {
+        id: 2,
+        name: "Dr. Rubul Kumar Baniya",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are like candles that burn to illuminate the world, lighting up our society with knowledge and wisdom. Thank you so much!"
+      },
+      {
+        id: 3,
+        name: "Dr. Pranjit Das",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are the true backbone of society, laying strong foundations for our future. Thank you so much for your mentorship and dedication!"
+      },
+      {
+        id: 4,
+        name: "Dr. Diganta Pathak",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=500&auto=format&fit=crop&q=80",
+        message: "Like candles that consume themselves to bring light to others, your knowledge and wisdom brighten our path. Thank you so much!"
+      },
+      {
+        id: 5,
+        name: "Dr. Monalisa Hazarika",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are like the backbone of our society, nurturing our minds and inspiring us to achieve our best. Thank you so much for guiding us!"
+      },
+      {
+        id: 6,
+        name: "Sikha Moni",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are like candles that burn themselves to light up society with their knowledge and wisdom. We are deeply grateful for your support!"
+      },
+      {
+        id: 7,
+        name: "Prarthana Ma'am",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=500&auto=format&fit=crop&q=80",
+        message: "A teacher's guidance is the true backbone of student success. Thank you so much for your patience, kindness, and inspiring wisdom!"
+      },
+      {
+        id: 8,
+        name: "Dr. Vivek Thapa",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers burn like candles to dispel darkness and spread the light of knowledge across society. Thank you so much for everything!"
+      },
+      {
+        id: 9,
+        name: "Ranjan Saikia",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are the pillars and backbone of society, building our character and inspiring us every day. Thank you so much!"
+      },
+      {
+        id: 10,
+        name: "Dr. Bikramjit Sarma",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=500&auto=format&fit=crop&q=80",
+        message: "Just as a candle burns to illuminate the path, your dedication enlightens society with wisdom and knowledge. Thank you so much!"
+      },
+      {
+        id: 11,
+        name: "Bishwajit Dev",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are the noble backbone of society, selflessly dedicating their lives to guide the next generation. Thank you so much!"
+      },
+      {
+        id: 12,
+        name: "Dr. Adil Akhtar",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are like candles that burn to illuminate the minds of students and enrich society with wisdom. Thank you so much!"
+      },
+      {
+        id: 13,
+        name: "Bibha Ma'am",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?w=500&auto=format&fit=crop&q=80",
+        message: "Thank you for being the steadfast backbone of our learning journey. Your warmth, wisdom, and guidance mean the world to us!"
+      },
+      {
+        id: 14,
+        name: "Liry Teronpi",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=500&auto=format&fit=crop&q=80",
+        message: "Like candles that burn to light the dark, teachers enrich society with knowledge, hope, and wisdom. Thank you so much!"
+      },
+      {
+        id: 15,
+        name: "Antariksha Baisa",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1534751516642-a171ed2e2188?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are the backbone of a progressive society, molding us into confident thinkers and responsible citizens. Thank you so much!"
+      },
+      {
+        id: 16,
+        name: "Bedanta Nath",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers burn like candles to light up society with wisdom and knowledge, expecting nothing in return. Thank you so much for your guidance!"
+      },
+      {
+        id: 17,
+        name: "Himanshu Saikia",
+        designation: "Department Faculty, CSE",
+        photo_url: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500&auto=format&fit=crop&q=80",
+        message: "Teachers are truly the backbone of our society, guiding us with patience, kindness, and boundless wisdom. Thank you so much!"
+      }
+    ];
+
+    /* ==========================================================================
+       SYNTHESIZED ENGAGING CAMPUS MUSIC ENGINE (WEB AUDIO API)
+       High-Energy Cyber Synthwave & Celebratory Beats (Zero external dependencies)
+       ========================================================================== */
+    let soundEnabled = true;
+    let audioCtx = null;
+    let noiseBuffer = null;
+    let musicMasterGain = null;
+    let musicCompressor = null;
+    let isMusicPlaying = false;
+    let musicSchedulerTimer = null;
+    let current16thStep = 0;
+    let nextStepTime = 0.0;
+    const tempo = 124.0;
+    const secondsPerBeat = 60.0 / tempo;
+    const secondsPerStep = secondsPerBeat / 4.0; // 16th note duration = ~0.121s
+    const scheduleAheadTime = 0.12;
+
+    // Harmonic Chord Progression (8 Bars in Am - F - C - G - Am - F - Dm - E7)
+    const chordProgression = [
+      // Bar 0: Am
+      { bass: 55.0, root: 220.0, notes: [220.0, 261.63, 329.63, 440.0, 523.25] },
+      // Bar 1: F
+      { bass: 43.65, root: 174.61, notes: [174.61, 220.0, 261.63, 349.23, 440.0] },
+      // Bar 2: C
+      { bass: 65.41, root: 130.81, notes: [130.81, 196.0, 261.63, 329.63, 392.0] },
+      // Bar 3: G
+      { bass: 49.0, root: 196.0, notes: [196.0, 246.94, 293.66, 392.0, 493.88] },
+      // Bar 4: Am (Chorus Lift)
+      { bass: 55.0, root: 220.0, notes: [220.0, 261.63, 329.63, 440.0, 659.25] },
+      // Bar 5: F (Crescendo)
+      { bass: 43.65, root: 174.61, notes: [174.61, 220.0, 261.63, 349.23, 523.25] },
+      // Bar 6: Dm
+      { bass: 73.42, root: 146.83, notes: [146.83, 174.61, 220.0, 293.66, 349.23] },
+      // Bar 7: E7 Turnaround
+      { bass: 82.41, root: 164.81, notes: [164.81, 207.65, 246.94, 329.63, 392.0] }
+    ];
+
+    // Catchy, joyful celebratory lead synth melody (step -> { freq, steps })
+    const melodyTrack = {
+      // Bar 0
+      0: { freq: 659.25, steps: 3 }, // E5
+      4: { freq: 783.99, steps: 3 }, // G5
+      8: { freq: 880.00, steps: 3 }, // A5
+      12: { freq: 783.99, steps: 2 }, // G5
+      14: { freq: 659.25, steps: 2 }, // E5
+      // Bar 1
+      16: { freq: 698.46, steps: 3 }, // F5
+      20: { freq: 659.25, steps: 3 }, // E5
+      24: { freq: 587.33, steps: 3 }, // D5
+      28: { freq: 523.25, steps: 3 }, // C5
+      // Bar 2
+      32: { freq: 783.99, steps: 3 }, // G5
+      36: { freq: 880.00, steps: 3 }, // A5
+      40: { freq: 1046.50, steps: 3 }, // C6
+      44: { freq: 987.77, steps: 3 }, // B5
+      // Bar 3
+      48: { freq: 783.99, steps: 3 }, // G5
+      52: { freq: 659.25, steps: 3 }, // E5
+      56: { freq: 587.33, steps: 3 }, // D5
+      60: { freq: 659.25, steps: 3 }, // E5
+      // Bar 4 (Chorus Peak!)
+      64: { freq: 880.00, steps: 3 }, // A5
+      68: { freq: 1046.50, steps: 3 }, // C6
+      72: { freq: 1318.51, steps: 3 }, // E6
+      76: { freq: 1174.66, steps: 3 }, // D6
+      // Bar 5
+      80: { freq: 1046.50, steps: 3 }, // C6
+      84: { freq: 880.00, steps: 3 }, // A5
+      88: { freq: 698.46, steps: 3 }, // F5
+      92: { freq: 880.00, steps: 3 }, // A5
+      // Bar 6
+      96: { freq: 587.33, steps: 3 }, // D5
+      100: { freq: 698.46, steps: 3 }, // F5
+      104: { freq: 880.00, steps: 3 }, // A5
+      108: { freq: 1046.50, steps: 3 }, // C6
+      // Bar 7 (Turnaround Finale)
+      112: { freq: 987.77, steps: 3 }, // B5
+      116: { freq: 830.61, steps: 3 }, // G#5
+      120: { freq: 987.77, steps: 2 }, // B5
+      122: { freq: 1046.50, steps: 2 }, // C6
+      124: { freq: 1174.66, steps: 2 }, // D6
+      126: { freq: 1318.51, steps: 2 }  // E6
+    };
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      initNoiseBuffer();
+      initMusicNodes();
+    }
+
+    function initNoiseBuffer() {
+      if (!audioCtx || noiseBuffer) return;
+      const bufferSize = audioCtx.sampleRate * 2;
+      noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = Math.random() * 2 - 1;
+      }
+    }
+
+    function initMusicNodes() {
+      if (!audioCtx || musicMasterGain) return;
+      musicCompressor = audioCtx.createDynamicsCompressor();
+      musicCompressor.threshold.setValueAtTime(-14, audioCtx.currentTime);
+      musicCompressor.knee.setValueAtTime(10, audioCtx.currentTime);
+      musicCompressor.ratio.setValueAtTime(4, audioCtx.currentTime);
+      musicCompressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
+      musicCompressor.release.setValueAtTime(0.25, audioCtx.currentTime);
+
+      musicMasterGain = audioCtx.createGain();
+      musicMasterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+
+      musicMasterGain.connect(musicCompressor);
+      musicCompressor.connect(audioCtx.destination);
+    }
+
+    function playKick(time) {
+      if (!audioCtx || !musicMasterGain) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.frequency.setValueAtTime(145, time);
+      osc.frequency.exponentialRampToValueAtTime(36, time + 0.08);
+      gain.gain.setValueAtTime(0.55, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.17);
+      osc.connect(gain);
+      gain.connect(musicMasterGain);
+      osc.start(time);
+      osc.stop(time + 0.18);
+    }
+
+    function playSnare(time) {
+      if (!audioCtx || !musicMasterGain || !noiseBuffer) return;
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = noiseBuffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 1400;
+      filter.Q.value = 1.2;
+      const gain = audioCtx.createGain();
+      gain.gain.setValueAtTime(0.35, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + 0.16);
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(musicMasterGain);
+      noise.start(time);
+      noise.stop(time + 0.17);
+
+      // Low punch
+      const osc = audioCtx.createOscillator();
+      const oscGain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(180, time);
+      osc.frequency.exponentialRampToValueAtTime(80, time + 0.07);
+      oscGain.gain.setValueAtTime(0.28, time);
+      oscGain.gain.exponentialRampToValueAtTime(0.001, time + 0.08);
+      osc.connect(oscGain);
+      oscGain.connect(musicMasterGain);
+      osc.start(time);
+      osc.stop(time + 0.09);
+    }
+
+    function playHiHat(time, isOpen) {
+      if (!audioCtx || !musicMasterGain || !noiseBuffer) return;
+      const noise = audioCtx.createBufferSource();
+      noise.buffer = noiseBuffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'highpass';
+      filter.frequency.value = 7500;
+      const gain = audioCtx.createGain();
+      const dur = isOpen ? 0.13 : 0.038;
+      const vol = isOpen ? 0.18 : 0.1;
+      gain.gain.setValueAtTime(vol, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+      noise.connect(filter);
+      filter.connect(gain);
+      gain.connect(musicMasterGain);
+      noise.start(time);
+      noise.stop(time + dur + 0.01);
+    }
+
+    function playBass(freq, time, dur) {
+      if (!audioCtx || !musicMasterGain) return;
+      const osc = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, time);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(450, time);
+      filter.frequency.exponentialRampToValueAtTime(170, time + dur * 0.9);
+      filter.Q.value = 4;
+
+      gain.gain.setValueAtTime(0.26, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(musicMasterGain);
+
+      osc.start(time);
+      osc.stop(time + dur + 0.02);
+    }
+
+    function playArp(freq, time, dur, vol = 0.11) {
+      if (!audioCtx || !musicMasterGain) return;
+      const osc = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, time);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(2200, time);
+      filter.frequency.exponentialRampToValueAtTime(450, time + dur);
+      filter.Q.value = 2;
+
+      gain.gain.setValueAtTime(vol, time);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(musicMasterGain);
+
+      osc.start(time);
+      osc.stop(time + dur + 0.02);
+    }
+
+    function playLead(freq, time, dur) {
+      if (!audioCtx || !musicMasterGain) return;
+      const osc = audioCtx.createOscillator();
+      const filter = audioCtx.createBiquadFilter();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(freq, time);
+
+      filter.type = 'lowpass';
+      filter.frequency.setValueAtTime(1800, time);
+      filter.frequency.linearRampToValueAtTime(2800, time + dur * 0.25);
+      filter.frequency.exponentialRampToValueAtTime(750, time + dur);
+      filter.Q.value = 3;
+
+      gain.gain.setValueAtTime(0.18, time);
+      gain.gain.linearRampToValueAtTime(0.22, time + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.001, time + dur);
+
+      osc.connect(filter);
+      filter.connect(gain);
+      gain.connect(musicMasterGain);
+
+      osc.start(time);
+      osc.stop(time + dur + 0.03);
+    }
+
+    function playShimmer(freq, time) {
+      if (!audioCtx || !musicMasterGain) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, time);
+      gain.gain.setValueAtTime(0.08, time);
+      gain.gain.exponentialRampToValueAtTime(0.0001, time + 0.38);
+      osc.connect(gain);
+      gain.connect(musicMasterGain);
+      osc.start(time);
+      osc.stop(time + 0.4);
+    }
+
+    function scheduleStep(step, time) {
+      const bar = Math.floor(step / 16);
+      const stepInBar = step % 16;
+      const chord = chordProgression[bar % 8];
+
+      // 1. Kick: beats 1, 2, 3, 4 + syncopated kick
+      if (stepInBar === 0 || stepInBar === 4 || stepInBar === 8 || stepInBar === 12 || (bar % 2 === 1 && stepInBar === 14)) {
+        playKick(time);
+      }
+
+      // 2. Snare: beats 2 & 4 (steps 4 & 12) + turnaround fill in bar 7
+      if (stepInBar === 4 || stepInBar === 12 || (bar === 7 && (stepInBar === 8 || stepInBar === 10 || stepInBar === 14))) {
+        playSnare(time);
+      }
+
+      // 3. Hi-hats: 16ths with open sizzling hats on offbeats
+      if (stepInBar % 2 === 0) {
+        const isOpen = (stepInBar === 2 || stepInBar === 6 || stepInBar === 10 || stepInBar === 14);
+        playHiHat(time, isOpen);
+      } else {
+        playHiHat(time, false);
+      }
+
+      // 4. Bassline: 8th-notes octave groove
+      if (stepInBar % 2 === 0) {
+        const isOctave = (stepInBar === 2 || stepInBar === 6 || stepInBar === 10 || stepInBar === 14);
+        const bassFreq = isOctave ? chord.bass * 2 : chord.bass;
+        playBass(bassFreq, time, secondsPerStep * 1.8);
+      }
+
+      // 5. Arp chords: 16th note pattern
+      const arpNote = chord.notes[stepInBar % chord.notes.length];
+      playArp(arpNote, time, secondsPerStep * 1.4, 0.11);
+
+      // 6. Lead melody
+      const leadNote = melodyTrack[step];
+      if (leadNote) {
+        playLead(leadNote.freq, time, secondsPerStep * leadNote.steps);
+      }
+
+      // 7. If currently on Reveal View, add celebratory glockenspiel shimmer bells
+      if (window.isCurrentRevealView && stepInBar % 4 === 0) {
+        const bellNote = chord.notes[(stepInBar / 4) % chord.notes.length] * 2;
+        playShimmer(bellNote, time);
+      }
+    }
+
+    function musicScheduler() {
+      if (!isMusicPlaying || !audioCtx) return;
+      while (nextStepTime < audioCtx.currentTime + scheduleAheadTime) {
+        scheduleStep(current16thStep, nextStepTime);
+        nextStepTime += secondsPerStep;
+        current16thStep = (current16thStep + 1) % 128;
+      }
+    }
+
+    function startBackgroundMusic() {
+      initAudio();
+      if (!audioCtx) return;
+      if (isMusicPlaying) return;
+
+      isMusicPlaying = true;
+      current16thStep = 0;
+      nextStepTime = audioCtx.currentTime + 0.05;
+
+      musicMasterGain.gain.setValueAtTime(0, audioCtx.currentTime);
+      musicMasterGain.gain.linearRampToValueAtTime(0.32, audioCtx.currentTime + 0.3);
+
+      musicSchedulerTimer = setInterval(musicScheduler, 25);
+      updateMusicUi(true);
+    }
+
+    function stopBackgroundMusic() {
+      if (!isMusicPlaying) return;
+      if (musicMasterGain && audioCtx) {
+        musicMasterGain.gain.setValueAtTime(musicMasterGain.gain.value, audioCtx.currentTime);
+        musicMasterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.22);
+      }
+      setTimeout(() => {
+        clearInterval(musicSchedulerTimer);
+        musicSchedulerTimer = null;
+        isMusicPlaying = false;
+        updateMusicUi(false);
+      }, 230);
+    }
+
+    function toggleBackgroundMusic() {
+      initAudio();
+      if (isMusicPlaying) {
+        stopBackgroundMusic();
+        showToast('Campus Anthem Paused ⏸');
+      } else {
+        startBackgroundMusic();
+        showToast('Now Playing: Teachers\' Day Anthem 🎵');
+      }
+    }
+
+    function updateMusicUi(playing) {
+      const musicToggleBtn = document.getElementById('musicToggleBtn');
+      const musicLabel = document.getElementById('musicLabel');
+      const homeMusicBanner = document.getElementById('homeMusicBanner');
+
+      if (musicToggleBtn) {
+        musicToggleBtn.classList.toggle('playing', playing);
+      }
+      if (musicLabel) {
+        musicLabel.textContent = playing ? 'Music: ON' : 'Music: OFF';
+      }
+      if (homeMusicBanner) {
+        homeMusicBanner.classList.toggle('playing', playing);
+        const btn = homeMusicBanner.querySelector('.music-banner-btn');
+        const pill = homeMusicBanner.querySelector('.music-banner-pill');
+        if (btn) btn.textContent = playing ? 'Pause ⏸' : 'Play Music ▶';
+        if (pill) pill.textContent = playing ? 'NOW PLAYING' : 'LIVE MUSIC';
+      }
+    }
+
+    function playDummyBoop() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        if (!audioCtx) return;
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(392, now); // G4
+        osc.frequency.exponentialRampToValueAtTime(196, now + 0.38); // G3 descending
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.2, now + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 0.39);
+      } catch (e) {}
+    }
+
+    function playCelebrationFanfare() {
+      if (!soundEnabled) return;
+      try {
+        initAudio();
+        if (!audioCtx) return;
+
+        const now = audioCtx.currentTime;
+        // Ascending triumphant cyber arpeggio: C5 (523.25), E5 (659.25), G5 (783.99), C6 (1046.50)
+        const notes = [523.25, 659.25, 783.99, 1046.50];
+        
+        notes.forEach((freq, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = idx === 3 ? 'triangle' : 'sine';
+          osc.frequency.setValueAtTime(freq, now + idx * 0.12);
+
+          gain.gain.setValueAtTime(0, now + idx * 0.12);
+          gain.gain.linearRampToValueAtTime(0.22, now + idx * 0.12 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.12 + 0.85);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now + idx * 0.12);
+          osc.stop(now + idx * 0.12 + 0.9);
+        });
+
+        // Add celebratory chime sparkle shimmer
+        const sparkleTimes = [0.45, 0.58, 0.72, 0.85];
+        sparkleTimes.forEach((delay, i) => {
+          const sOsc = audioCtx.createOscillator();
+          const sGain = audioCtx.createGain();
+          sOsc.type = 'sine';
+          sOsc.frequency.setValueAtTime(1318.5 + (i * 220), now + delay);
+          sGain.gain.setValueAtTime(0, now + delay);
+          sGain.gain.linearRampToValueAtTime(0.12, now + delay + 0.02);
+          sGain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 0.4);
+          sOsc.connect(sGain);
+          sGain.connect(audioCtx.destination);
+          sOsc.start(now + delay);
+          sOsc.stop(now + delay + 0.45);
+        });
+      } catch (err) {
+        console.warn('Audio feedback notice:', err);
+      }
+    }
+
+    // Toggle sound effects button
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundLabel = document.getElementById('soundLabel');
+    if (soundToggleBtn) {
+      soundToggleBtn.addEventListener('click', () => {
+        initAudio();
+        soundEnabled = !soundEnabled;
+        soundLabel.textContent = soundEnabled ? 'SFX: ON' : 'SFX: OFF';
+        soundToggleBtn.classList.toggle('active', soundEnabled);
+        showToast(soundEnabled ? 'Sound FX enabled 🔔' : 'Sound FX muted 🔕');
+      });
+    }
+
+    /* ==========================================================================
+       FULL-SCREEN HIGH-ENERGY CONFETTI PARTICLE SYSTEM
+       ========================================================================== */
+    const canvas = document.getElementById('confettiCanvas');
+    const ctx = canvas.getContext('2d');
+    let confettiParticles = [];
+    let confettiAnimationId = null;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const CONFETTI_COLORS = [
+      '#00f0ff', // Electric Neon Cyan
+      '#38bdf8', // Cyber Sky Blue
+      '#fbbf24', // Golden Celebration
+      '#f43f5e', // Hot Festive Pink
+      '#10b981', // Emerald Victory
+      '#ffffff', // Pure Diamond White
+      '#a855f7'  // Neon Violet
+    ];
+
+    class ConfettiParticle {
+      constructor(x, y, isBurst = false) {
+        this.x = x;
+        this.y = y;
+        this.size = Math.random() * 9 + 6;
+        this.color = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+        
+        const angle = isBurst 
+          ? (Math.random() * Math.PI * 1.6) - (Math.PI * 0.8) // Fan upward
+          : Math.random() * Math.PI * 2;
+        
+        const speed = isBurst ? Math.random() * 18 + 12 : Math.random() * 6 + 2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = isBurst ? -(Math.sin(Math.abs(angle)) * speed + 8) : Math.sin(angle) * speed;
+        
+        this.gravity = 0.38;
+        this.drag = 0.94;
+        this.rotation = Math.random() * 360;
+        this.rotationSpeed = (Math.random() - 0.5) * 14;
+        this.tilt = Math.random() * 10;
+        this.tiltSpeed = Math.random() * 0.1 + 0.05;
+        this.opacity = 1;
+        this.decay = Math.random() * 0.006 + 0.004;
+        this.shape = Math.random() > 0.3 ? 'rect' : 'circle';
+      }
+
+      update() {
+        this.vx *= this.drag;
+        this.vy *= this.drag;
+        this.vy += this.gravity;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.rotation += this.rotationSpeed;
+        this.tilt += this.tiltSpeed;
+        this.opacity -= this.decay;
+      }
+
+      draw(c) {
+        if (this.opacity <= 0) return;
+        c.save();
+        c.globalAlpha = Math.max(0, this.opacity);
+        c.translate(this.x, this.y);
+        c.rotate((this.rotation * Math.PI) / 180);
+        c.fillStyle = this.color;
+        c.shadowColor = this.color;
+        c.shadowBlur = 6;
+
+        if (this.shape === 'rect') {
+          const w = this.size;
+          const h = this.size * Math.sin(this.tilt);
+          c.fillRect(-w / 2, -h / 2, w, h);
+        } else {
+          c.beginPath();
+          c.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+          c.fill();
+        }
+        c.restore();
+      }
+    }
+
+    function triggerConfettiCelebration() {
+      // Spawn two celebratory cannon blasts from bottom left and right
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+
+      // Center explosion
+      for (let i = 0; i < 90; i++) {
+        confettiParticles.push(new ConfettiParticle(w * 0.5, h * 0.65, true));
+      }
+      // Left cannon
+      for (let i = 0; i < 60; i++) {
+        const p = new ConfettiParticle(w * 0.15, h * 0.9, true);
+        p.vx += 5;
+        confettiParticles.push(p);
+      }
+      // Right cannon
+      for (let i = 0; i < 60; i++) {
+        const p = new ConfettiParticle(w * 0.85, h * 0.9, true);
+        p.vx -= 5;
+        confettiParticles.push(p);
+      }
+
+      if (!confettiAnimationId) {
+        animateConfetti();
+      }
+    }
+
+    function animateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      for (let i = confettiParticles.length - 1; i >= 0; i--) {
+        const p = confettiParticles[i];
+        p.update();
+        p.draw(ctx);
+        if (p.opacity <= 0 || p.y > canvas.height + 50) {
+          confettiParticles.splice(i, 1);
+        }
+      }
+
+      if (confettiParticles.length > 0) {
+        confettiAnimationId = requestAnimationFrame(animateConfetti);
+      } else {
+        cancelAnimationFrame(confettiAnimationId);
+        confettiAnimationId = null;
+      }
+    }
+
+    /* ==========================================================================
+       URL PARAMETER PARSER & NAVIGATION
+       ========================================================================== */
+    function getRequestedTeacherId() {
+      // 1. Check Query Parameter: ?id=7
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryId = urlParams.get('id');
+      if (queryId) {
+        const parsed = parseInt(queryId, 10);
+        if (!isNaN(parsed)) return parsed;
+      }
+
+      // 2. Fallback Check Hash Parameter: #id=7 or #7
+      const hash = window.location.hash.replace('#', '').trim();
+      if (hash) {
+        if (hash.startsWith('id=')) {
+          const parsed = parseInt(hash.replace('id=', ''), 10);
+          if (!isNaN(parsed)) return parsed;
+        } else {
+          const parsed = parseInt(hash, 10);
+          if (!isNaN(parsed)) return parsed;
+        }
+      }
+
+      return null;
+    }
+
+    function navigateToId(id) {
+      if (id !== null) {
+        const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname + '?id=' + id;
+        window.history.pushState({ id: id }, '', newUrl);
+      } else {
+        const newUrl = window.location.protocol + '//' + window.location.host + window.location.pathname;
+        window.history.pushState({}, '', newUrl);
+      }
+      renderApp();
+    }
+
+    window.addEventListener('popstate', () => {
+      renderApp();
+    });
+
+    /* ==========================================================================
+       TOAST UTILITY
+       ========================================================================== */
+    let toastTimeout = null;
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
+
+      toastMsg.textContent = message;
+      toast.classList.add('show');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2600);
+    }
+
+    /* ==========================================================================
+       RENDER FUNCTIONS
+       ========================================================================== */
+    const appRoot = document.getElementById('appRoot');
+
+    function renderApp() {
+      const teacherId = getRequestedTeacherId();
+
+      if (teacherId !== null) {
+        if (DUMMY_IDS.includes(teacherId)) {
+          window.isCurrentRevealView = false;
+          // Decoy / Dummy QR scanned (#18, #19, #20)
+          renderDummyQrView(teacherId);
+          setTimeout(() => {
+            playDummyBoop();
+          }, 80);
+        } else {
+          const teacher = teachers.find(t => t.id === teacherId);
+          if (teacher) {
+            window.isCurrentRevealView = true;
+            renderRevealView(teacher);
+            // Trigger celebratory confetti and audio fanfare!
+            setTimeout(() => {
+              triggerConfettiCelebration();
+              playCelebrationFanfare();
+            }, 80);
+          } else {
+            window.isCurrentRevealView = false;
+            renderNotFoundView(teacherId);
+          }
+        }
+      } else {
+        window.isCurrentRevealView = false;
+        renderHomeView();
+      }
+      updateMusicUi(isMusicPlaying);
+    }
+
+    /* HOME SCREEN (When no ?id= is present - Matches image_1.png instructions) */
+    function renderHomeView() {
+      // Build test chips for teachers 1 to 20
+      let chipsHtml = '';
+      for (let i = 1; i <= 20; i++) {
+        const isDecoy = DUMMY_IDS.includes(i);
+        chipsHtml += `
+          <button class="test-chip" onclick="navigateToId(${i})">
+            <span>#${i < 10 ? '0' + i : i}</span>
+            QR
+          </button>
+        `;
+      }
+
+      appRoot.innerHTML = `
+        <!-- Interactive Campus Anthem Music Banner -->
+        <div id="homeMusicBanner" class="music-player-banner ${isMusicPlaying ? 'playing' : ''}" onclick="toggleBackgroundMusic()" title="Click to ${isMusicPlaying ? 'pause' : 'play'} Teachers' Day Anthem">
+          <div class="music-banner-left">
+            <div class="music-icon-disc">🎵</div>
+            <div class="music-banner-info">
+              <div class="music-banner-title">
+                <span>Teachers' Day Anthem</span>
+                <span class="music-banner-pill">${isMusicPlaying ? 'NOW PLAYING' : 'LIVE MUSIC'}</span>
+              </div>
+              <div class="music-banner-sub">Upbeat Cyber Synthwave • Festival Celebration Beats</div>
+            </div>
+          </div>
+          <div class="music-banner-right">
+            <div class="equalizer-bars">
+              <span class="eq-bar bar-1"></span>
+              <span class="eq-bar bar-2"></span>
+              <span class="eq-bar bar-3"></span>
+              <span class="eq-bar bar-4"></span>
+            </div>
+            <button class="music-banner-btn" type="button">
+              ${isMusicPlaying ? 'Pause ⏸' : 'Play Music ▶'}
+            </button>
+          </div>
+        </div>
+
+        <div class="cyber-card">
+          <div class="corner-bracket corner-tl"></div>
+          <div class="corner-bracket corner-tr"></div>
+          <div class="corner-bracket corner-bl"></div>
+          <div class="corner-bracket corner-br"></div>
+
+          <!-- Central Scanning Instruction Card -->
+          <div class="scan-hero">
+            <div class="qr-frame">
+              <div class="laser-scan-line"></div>
+              <!-- High-tech QR Code SVG -->
+              <svg class="qr-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <path d="M7 7h.01"></path>
+                <path d="M17 7h.01"></path>
+                <path d="M7 17h.01"></path>
+                <path d="M17 17h.01"></path>
+                <path d="M10 10h4v4h-4z"></path>
+              </svg>
+            </div>
+
+            <h2 class="scan-title">Ready for Scan</h2>
+            <p class="scan-description">
+              Scan any numbered QR code placed across the CSE Department to instantly unlock that faculty member's profile and live tribute!
+            </p>
+          </div>
+
+          <!-- Three-Step List Instructions (Referencing image_1.png) -->
+          <div class="steps-section">
+            <div class="step-item">
+              <div class="step-badge">01</div>
+              <div class="step-content">
+                <div class="step-title">Locate</div>
+                <div class="step-text">Find physical QR markers hidden around department labs, classrooms, and seminar spaces.</div>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-badge">02</div>
+              <div class="step-content">
+                <div class="step-title">Scan #1 to #20</div>
+                <div class="step-text">Use your phone camera. 17 QRs reveal real department faculty tributes, while 3 are decoy test codes!</div>
+              </div>
+            </div>
+
+            <div class="step-item">
+              <div class="step-badge">03</div>
+              <div class="step-content">
+                <div class="step-title">Instant Reveal</div>
+                <div class="step-text">The crowd counts down your attempt as this screen instantly decrypts the teacher's profile!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quick Test / Organizer Drawer -->
+        <div class="quick-test-section">
+          <div class="quick-test-header" onclick="toggleQuickTest()">
+            <div class="quick-test-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+              <span>Instant Simulator: Test QR #1 - #20</span>
+            </div>
+            <span id="quickToggleIndicator" class="quick-test-toggle">Tap to Try</span>
+          </div>
+          
+          <div id="quickGridContainer" class="quick-test-grid">
+            ${chipsHtml}
+            <button class="test-chip random-btn" onclick="testRandomTeacher()">
+              🎲 Random Scan
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    /* REVEAL SCREEN (When ?id=X is present) */
+    function renderRevealView(teacher) {
+      const formattedId = teacher.id < 10 ? '0' + teacher.id : teacher.id;
+      const initials = teacher.name.split(' ').map(n => n[0]).filter(Boolean).slice(0, 2).join('');
+      const currentUrl = window.location.href;
+
+      appRoot.innerHTML = `
+        <div class="reveal-wrapper">
+          <div class="reveal-card">
+            <div class="reveal-glow-border"></div>
+            <div class="corner-bracket corner-tl"></div>
+            <div class="corner-bracket corner-tr"></div>
+            <div class="corner-bracket corner-bl"></div>
+            <div class="corner-bracket corner-br"></div>
+
+            <!-- Card Status Bar -->
+            <div class="reveal-status-bar">
+              <div class="verified-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>TOKEN VERIFIED</span>
+              </div>
+              <div class="teacher-id-chip">
+                TEACHER #${formattedId} / 17
+              </div>
+            </div>
+
+            <!-- Teacher Photo Frame -->
+            <div class="avatar-wrapper">
+              <div class="avatar-ring"></div>
+              <div class="avatar-img-box">
+                <img 
+                  id="teacherImg"
+                  class="teacher-photo" 
+                  src="${teacher.photo_url}" 
+                  alt="${teacher.name}" 
+                  onerror="this.style.display='none'; document.getElementById('avatarFallback').style.display='flex';"
+                />
+                <div id="avatarFallback" class="avatar-fallback">${initials}</div>
+              </div>
+            </div>
+
+            <!-- Teacher Info -->
+            <h2 class="teacher-name">${teacher.name}</h2>
+            <div class="teacher-designation">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+              </svg>
+              <span>${teacher.designation}</span>
+            </div>
+
+            <!-- Gradient Accent Divider from Immersive UI -->
+            <div class="gradient-divider"></div>
+
+            <!-- Personalized Heartfelt Teacher's Day Message -->
+            <div class="tribute-box">
+              <div class="quote-icon">“</div>
+              <div class="tribute-badge-label">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                </svg>
+                <span>TEACHER'S DAY TRIBUTE</span>
+              </div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color: rgba(0, 242, 255, 0.35); margin: 0 auto 10px auto; display: block;">
+                <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+              </svg>
+              <p class="teacher-message">
+                "${teacher.message}"
+              </p>
+            </div>
+
+            <!-- Department Stamp -->
+            <div class="card-footer-stamp">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00f0ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>Celebrated on Teachers' Day 2026 • CSE Live Hunt</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="reveal-actions">
+              <button class="btn btn-primary" onclick="retriggerCelebration()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+                  <line x1="4" y1="22" x2="4" y2="15"></line>
+                </svg>
+                Replay Celebration 🎉
+              </button>
+
+              <button class="btn btn-share" onclick="shareTeacherTribute(${teacher.id})" title="Share tribute via messaging apps or social media">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="18" cy="5" r="3"></circle>
+                  <circle cx="6" cy="12" r="3"></circle>
+                  <circle cx="18" cy="19" r="3"></circle>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                  <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                </svg>
+                <span>Share Tribute</span>
+              </button>
+
+              <button class="btn btn-secondary" onclick="navigateToId(null)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Scan Another QR
+              </button>
+
+              <button class="btn btn-secondary" onclick="copyRevealLink()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy Link
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* DUMMY DECOY SCREEN (When ?id=18, 19, or 20 is scanned) */
+    function renderDummyQrView(id) {
+      const formattedId = id < 10 ? '0' + id : id;
+      appRoot.innerHTML = `
+        <div class="reveal-wrapper">
+          <div class="reveal-card dummy-qr-box">
+            <div class="corner-bracket corner-tl"></div>
+            <div class="corner-bracket corner-tr"></div>
+            <div class="corner-bracket corner-bl"></div>
+            <div class="corner-bracket corner-br"></div>
+
+            <div class="dummy-pill">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span>DECOY QR #${formattedId}</span>
+            </div>
+
+            <div class="dummy-qr-icon-wrapper">
+              <span class="dummy-qr-icon">🎲</span>
+            </div>
+
+            <h2 class="dummy-qr-title">Oops! Lost your chance.</h2>
+            <p class="dummy-qr-desc">
+              Please try scanning another one! This QR code is one of the 3 decoy markers. 17 real teacher tributes are hidden around the CSE department—keep hunting!
+            </p>
+
+            <div class="gradient-divider" style="margin-bottom: 24px;"></div>
+
+            <div class="reveal-actions" style="justify-content: center;">
+              <button class="btn btn-primary" onclick="navigateToId(null)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"></line>
+                  <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+                Scan Another QR
+              </button>
+              <button class="btn btn-secondary" onclick="testRandomTeacher()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                </svg>
+                Try Random QR
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* NOT FOUND SCREEN (If an invalid ?id= is scanned) */
+    function renderNotFoundView(id) {
+      appRoot.innerHTML = `
+        <div class="cyber-card not-found-box">
+          <div class="corner-bracket corner-tl"></div>
+          <div class="corner-bracket corner-tr"></div>
+          <div class="corner-bracket corner-bl"></div>
+          <div class="corner-bracket corner-br"></div>
+
+          <div class="not-found-icon">⚠️</div>
+          <h2 class="scan-title">Unrecognized QR Code (#${id})</h2>
+          <p class="scan-description" style="margin-bottom: 24px;">
+            The scanned QR code is outside the active range (#1 to #20) for this event. Please verify the code and try scanning again.
+          </p>
+
+          <button class="btn btn-primary" onclick="navigateToId(null)">
+            Return to Scanner
+          </button>
+        </div>
+      `;
+    }
+
+    /* ==========================================================================
+       EVENT HANDLERS & HELPERS
+       ========================================================================== */
+    window.navigateToId = navigateToId;
+
+    window.retriggerCelebration = function() {
+      triggerConfettiCelebration();
+      playCelebrationFanfare();
+      showToast('Celebration fanfare unleashed! 🎊');
+    };
+
+    window.shareTeacherTribute = async function(id) {
+      const teacher = teachers.find(t => t.id === id);
+      const url = window.location.href;
+      const title = teacher ? `Teachers' Day Tribute: ${teacher.name}` : `CSE Teachers' Day 2026 Tribute`;
+      const text = teacher 
+        ? `Celebrating ${teacher.name} (${teacher.designation}) for Teachers' Day 2026! "${teacher.message}"` 
+        : `Check out this Teachers' Day tribute on CSE Live Hunt!`;
+
+      if (navigator.share) {
+        try {
+          await navigator.share({
+            title: title,
+            text: text,
+            url: url
+          });
+          showToast('Tribute shared successfully! ✨');
+        } catch (err) {
+          // If user canceled the share modal, AbortError is raised - do nothing
+          if (err && err.name !== 'AbortError') {
+            console.warn('Web Share was interrupted or not permitted:', err);
+            window.copyRevealLink();
+          }
+        }
+      } else {
+        // Fallback for desktop or environments without Web Share API
+        window.copyRevealLink();
+        showToast('Link copied! Ready to paste in any app 📋');
+      }
+    };
+
+    window.copyRevealLink = function() {
+      const url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url)
+          .then(() => showToast('QR tribute URL copied to clipboard! 📋'))
+          .catch(() => showToast('Link ready: ' + url));
+      } else {
+        showToast('Link: ' + url);
+      }
+    };
+
+    window.testRandomTeacher = function() {
+      const randomId = Math.floor(Math.random() * 20) + 1;
+      navigateToId(randomId);
+    };
+
+    window.toggleQuickTest = function() {
+      const grid = document.getElementById('quickGridContainer');
+      const indicator = document.getElementById('quickToggleIndicator');
+      if (grid) {
+        const isHidden = grid.style.display === 'none';
+        grid.style.display = isHidden ? 'grid' : 'none';
+        if (indicator) {
+          indicator.textContent = isHidden ? 'Hide' : 'Show';
+        }
+      }
+    };
+
+    window.toggleBackgroundMusic = toggleBackgroundMusic;
+    window.startBackgroundMusic = startBackgroundMusic;
+    window.stopBackgroundMusic = stopBackgroundMusic;
+
+    // Interaction listener to resume audio context if browser suspended it
+    function unlockAudioOnInteraction() {
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+    window.addEventListener('click', unlockAudioOnInteraction, { passive: true });
+    window.addEventListener('touchstart', unlockAudioOnInteraction, { passive: true });
+
+    // Initialize application on load
+    document.addEventListener('DOMContentLoaded', () => {
+      renderApp();
+    });
+    // Also run immediately in case DOM is already ready
+    renderApp();
+  </script>
+</body>
+</html>
