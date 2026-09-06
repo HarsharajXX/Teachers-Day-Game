@@ -8,8 +8,8 @@ if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, { recursive: true });
 }
 
-// Use command line argument or environment variable, defaulting to active development URL
-const BASE_URL = process.argv[2] || process.env.BASE_URL || 'https://ais-dev-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
+const PUBLIC_SHARED_URL = 'https://ais-pre-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
+const DEV_URL = 'https://ais-dev-6lajhjqfy7vryrbl5juvx6-563603576450.asia-southeast1.run.app';
 
 const teachers = [
   { id: 1, name: "Dr. Uzzal Kr Sharma", role: "Head of Department (HOD)" },
@@ -34,18 +34,16 @@ const teachers = [
   { id: 20, name: "Decoy QR Marker C", role: "Decoy Code (Oops! Lost chance)" }
 ];
 
-async function generateAllQrs() {
-  console.log(`Generating 20 QR codes with Base URL: ${BASE_URL}...`);
+async function generateBundle(baseUrl, bundleName, isDefault = false) {
+  console.log(`Generating bundle '${bundleName}' with Base URL: ${baseUrl}...`);
   const zip = new JSZip();
   const manifest = [];
 
   for (const item of teachers) {
     const numStr = item.id < 10 ? '0' + item.id : '' + item.id;
-    const targetUrl = `${BASE_URL}/?id=${item.id}`;
+    const targetUrl = `${baseUrl}/?id=${item.id}`;
     const filename = `QR-${numStr}.png`;
-    const filepath = path.join(outputDir, filename);
 
-    // Generate high resolution PNG (width 600px with high error correction)
     const pngBuffer = await QRCode.toBuffer(targetUrl, {
       width: 600,
       margin: 2,
@@ -56,7 +54,9 @@ async function generateAllQrs() {
       }
     });
 
-    fs.writeFileSync(filepath, pngBuffer);
+    if (isDefault) {
+      fs.writeFileSync(path.join(outputDir, filename), pngBuffer);
+    }
     zip.file(filename, pngBuffer);
 
     manifest.push({
@@ -68,16 +68,17 @@ async function generateAllQrs() {
       targetUrl,
       file: `/qr-codes/${filename}`
     });
-
-    console.log(`✓ Generated ${filename} -> ${targetUrl} (${item.name})`);
   }
 
-  // Create a printable manifest / instructions in the zip
-  const readmeContent = `CSE TEACHERS' DAY LIVE HUNT 2026 - QR CODES BUNDLE
-=====================================================
-Target URL Base: ${BASE_URL}
+  const readme = `CSE TEACHERS' DAY LIVE HUNT 2026 - QR CODES BUNDLE (${bundleName.toUpperCase()})
+========================================================================
+Target URL Base: ${baseUrl}
 
-INSTRUCTIONS FOR ORGANIZERS:
+IMPORTANT ACCESS INFORMATION:
+- Public Shared URL (ais-pre-...): Accessible to EVERYONE without requiring any login! (Requires clicking "Share" once in AI Studio).
+- Dev URL (ais-dev-...): Accessible ONLY by the app creator Google account. Other Google accounts will see "We are sorry, but you do not have access to this page".
+
+SETUP INSTRUCTIONS:
 1. Print these 20 QR codes on paper or sticker sheets.
 2. Hide/place them around the CSE department labs, classrooms, and seminar spaces.
 3. Students and attendees scan with any standard smartphone camera.
@@ -88,20 +89,30 @@ QR CODES LIST:
 ${manifest.map(m => `[#${m.number}] ${m.type.toUpperCase()}: ${m.name} -> ${m.targetUrl}`).join('\n')}
 `;
 
-  zip.file('README-HUNT-INSTRUCTIONS.txt', readmeContent);
+  zip.file('README-HUNT-INSTRUCTIONS.txt', readme);
   zip.file('manifest.json', JSON.stringify(manifest, null, 2));
 
-  // Write zip file
   const zipBuffer = await zip.generateAsync({ type: 'nodebuffer', compression: 'DEFLATE' });
-  const zipPath = path.join(outputDir, 'cse-hunt-all-20-qrs.zip');
-  fs.writeFileSync(zipPath, zipBuffer);
-  console.log(`✓ Successfully bundled all 20 QRs into ${zipPath} (${(zipBuffer.length / 1024).toFixed(1)} KB)`);
+  const zipFilename = `cse-hunt-${bundleName}-qrs.zip`;
+  fs.writeFileSync(path.join(outputDir, zipFilename), zipBuffer);
+  console.log(`✓ Saved ${zipFilename} (${(zipBuffer.length / 1024).toFixed(1)} KB)`);
 
-  // Write manifest.json to public/qr-codes/manifest.json
-  fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+  if (isDefault) {
+    fs.writeFileSync(path.join(outputDir, 'cse-hunt-all-20-qrs.zip'), zipBuffer);
+    fs.writeFileSync(path.join(outputDir, 'manifest.json'), JSON.stringify(manifest, null, 2));
+    console.log(`✓ Saved default cse-hunt-all-20-qrs.zip`);
+  }
 }
 
-generateAllQrs().catch(err => {
+async function run() {
+  // Generate public shared bundle (Primary for students & all accounts)
+  await generateBundle(PUBLIC_SHARED_URL, 'public-shared', true);
+  // Generate private dev bundle (For owner private testing)
+  await generateBundle(DEV_URL, 'dev-private', false);
+  console.log('✓ All QR bundles successfully created!');
+}
+
+run().catch(err => {
   console.error('Error generating QRs:', err);
   process.exit(1);
 });
